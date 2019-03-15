@@ -30,6 +30,28 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.1.0-SNAP8"
 )
 
+enablePlugins(SbtOsgi)
+
+osgiSettings
+
+OsgiKeys.exportPackage := Seq(
+  "org.scalatestplus.mockito.*"
+)
+
+OsgiKeys.importPackage := Seq(
+  "org.scalatest.*",
+  "org.scalactic.*", 
+  "scala.*;version=\"$<range;[==,=+);$<replace;"+scalaBinaryVersion.value+";-;.>>\"",
+  "*;resolution:=optional"
+)
+
+OsgiKeys.additionalHeaders:= Map(
+  "Bundle-Name" -> "ScalaTestPlusMockito",
+  "Bundle-Description" -> "ScalaTest+Mockito is an open-source integration library between ScalaTest and Mockito for Scala projects.",
+  "Bundle-DocURL" -> "http://www.scalatest.org/",
+  "Bundle-Vendor" -> "Artima, Inc."
+)
+
 publishTo := {
   val nexus = "https://oss.sonatype.org/"
   Some("publish-releases" at nexus + "service/local/staging/deploy/maven2")
