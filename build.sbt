@@ -2,7 +2,7 @@ name := "scalatestplus-mockito"
 
 organization := "org.scalatestplus"
 
-version := "1.0.0-SNAP2"
+version := "1.0.0-SNAP3"
 
 homepage := Some(url("https://github.com/scalatest/scalatestplus-mockito"))
 
@@ -27,7 +27,7 @@ crossScalaVersions := List("2.10.7", "2.11.12", "2.12.8", "2.13.0-RC1")
 
 libraryDependencies ++= Seq(
   "org.mockito" % "mockito-core" % "1.10.19",
-  "org.scalatest" %% "scalatest" % "3.1.0-SNAP9"
+  "org.scalatest" %% "scalatest" % "3.1.0-SNAP10"
 )
 
 enablePlugins(SbtOsgi)
