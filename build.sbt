@@ -2,7 +2,7 @@ name := "scalatestplus-mockito"
 
 organization := "org.scalatestplus"
 
-version := "1.0.0-SNAP5"
+version := "1.0.0-M1"
 
 homepage := Some(url("https://github.com/scalatest/scalatestplus-mockito"))
 
