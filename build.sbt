@@ -2,7 +2,7 @@ name := "mockito-1.10"
 
 organization := "org.scalatestplus"
 
-version := "3.1.0.0-RC3"
+version := "3.1.0.0"
 
 homepage := Some(url("https://github.com/scalatest/scalatestplus-mockito"))
 
@@ -23,12 +23,28 @@ developers := List(
   )
 )
 
-crossScalaVersions := List("2.10.7", "2.11.12", "2.12.10", "2.13.0")
+crossScalaVersions := List("2.10.7", "2.11.12", "2.12.10", "2.13.1")
 
 libraryDependencies ++= Seq(
   "org.mockito" % "mockito-core" % "1.10.19",
-  "org.scalatest" %% "scalatest" % "3.1.0-RC3"
+  "org.scalatest" %% "scalatest" % "3.1.0"
 )
+
+import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
+import scala.xml.transform.{RewriteRule, RuleTransformer}
+
+// skip dependency elements with a scope
+pomPostProcess := { (node: XmlNode) =>
+  new RuleTransformer(new RewriteRule {
+    override def transform(node: XmlNode): XmlNodeSeq = node match {
+      case e: Elem if e.label == "dependency"
+          && e.child.exists(child => child.label == "scope") =>
+        def txt(label: String): String = "\"" + e.child.filter(_.label == label).flatMap(_.text).mkString + "\""
+        Comment(s""" scoped dependency ${txt("groupId")} % ${txt("artifactId")} % ${txt("version")} % ${txt("scope")} has been omitted """)
+      case _ => node
+    }
+  }).transform(node).head
+}
 
 enablePlugins(SbtOsgi)
 
