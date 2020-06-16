@@ -82,8 +82,14 @@ publishArtifact in Test := false
 
 pomIncludeRepository := { _ => false }
 
+pomExtra := (
+  <scm>
+    <url>https://github.com/scalatest/scalatestplus-mockito</url>
+    <connection>scm:git:git@github.com:scalatest/scalatestplus-mockito.git</connection>
+    <developerConnection>
+      scm:git:git@github.com:scalatest/scalatestplus-mockito.git
+    </developerConnection>
+  </scm>
+)
+
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
-
-pgpSecretRing := file((Path.userHome / ".gnupg" / "secring.gpg").getAbsolutePath)
-
-pgpPassphrase := None
