@@ -1,4 +1,4 @@
-name := "mockito-3.3"
+name := "mockito-3.4"
 
 organization := "org.scalatestplus"
 
@@ -6,7 +6,9 @@ version := "3.2.0.0"
 
 homepage := Some(url("https://github.com/scalatest/scalatestplus-mockito"))
 
-licenses := List("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0"))
+licenses := List(
+  "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
+)
 
 developers := List(
   Developer(
@@ -26,12 +28,14 @@ developers := List(
 crossScalaVersions := List("2.10.7", "2.11.12", "2.12.11", "2.13.2", "0.24.0")
 
 libraryDependencies ++= Seq(
-  "org.mockito" % "mockito-core" % "3.3.3",
-  "org.scalatest" %% "scalatest-core" % "3.2.0", 
+  "org.mockito" % "mockito-core" % "3.4.6",
+  "org.scalatest" %% "scalatest-core" % "3.2.0",
   "org.scalatest" %% "scalatest-funsuite" % "3.2.0" % "test"
 )
 
-Test / scalacOptions ++= (if (isDotty.value) Seq("-language:implicitConversions") else Nil)
+Test / scalacOptions ++= (if (isDotty.value)
+                            Seq("-language:implicitConversions")
+                          else Nil)
 
 import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 import scala.xml.transform.{RewriteRule, RuleTransformer}
@@ -40,10 +44,19 @@ import scala.xml.transform.{RewriteRule, RuleTransformer}
 pomPostProcess := { (node: XmlNode) =>
   new RuleTransformer(new RewriteRule {
     override def transform(node: XmlNode): XmlNodeSeq = node match {
-      case e: Elem if e.label == "dependency"
-          && e.child.exists(child => child.label == "scope") =>
-        def txt(label: String): String = "\"" + e.child.filter(_.label == label).flatMap(_.text).mkString + "\""
-        Comment(s""" scoped dependency ${txt("groupId")} % ${txt("artifactId")} % ${txt("version")} % ${txt("scope")} has been omitted """)
+      case e: Elem
+          if e.label == "dependency"
+            && e.child.exists(child => child.label == "scope") =>
+        def txt(label: String): String =
+          "\"" + e.child
+            .filter(_.label == label)
+            .flatMap(_.text)
+            .mkString + "\""
+        Comment(
+          s""" scoped dependency ${txt("groupId")} % ${txt("artifactId")} % ${txt(
+            "version"
+          )} % ${txt("scope")} has been omitted """
+        )
       case _ => node
     }
   }).transform(node).head
@@ -53,18 +66,16 @@ enablePlugins(SbtOsgi)
 
 osgiSettings
 
-OsgiKeys.exportPackage := Seq(
-  "org.scalatestplus.mockito.*"
-)
+OsgiKeys.exportPackage := Seq("org.scalatestplus.mockito.*")
 
 OsgiKeys.importPackage := Seq(
   "org.scalatest.*",
-  "org.scalactic.*", 
-  "scala.*;version=\"$<range;[==,=+);$<replace;"+scalaBinaryVersion.value+";-;.>>\"",
+  "org.scalactic.*",
+  "scala.*;version=\"$<range;[==,=+);$<replace;" + scalaBinaryVersion.value + ";-;.>>\"",
   "*;resolution:=optional"
 )
 
-OsgiKeys.additionalHeaders:= Map(
+OsgiKeys.additionalHeaders := Map(
   "Bundle-Name" -> "ScalaTestPlusMockito",
   "Bundle-Description" -> "ScalaTest+Mockito is an open-source integration library between ScalaTest and Mockito for Scala projects.",
   "Bundle-DocURL" -> "http://www.scalatest.org/",
@@ -80,7 +91,9 @@ publishMavenStyle := true
 
 publishArtifact in Test := false
 
-pomIncludeRepository := { _ => false }
+pomIncludeRepository := { _ =>
+  false
+}
 
 pomExtra := (
   <scm>

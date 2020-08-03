@@ -2,3 +2,4 @@
 *.log
 target/
 _site/
+.idea/
