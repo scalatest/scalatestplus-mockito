@@ -2,7 +2,7 @@ name := "mockito-3.3"
 
 organization := "org.scalatestplus"
 
-version := "3.2.0.0"
+version := "3.2.1.0"
 
 homepage := Some(url("https://github.com/scalatest/scalatestplus-mockito"))
 
@@ -23,12 +23,12 @@ developers := List(
   )
 )
 
-crossScalaVersions := List("2.10.7", "2.11.12", "2.12.11", "2.13.2", "0.24.0")
+crossScalaVersions := List("2.10.7", "2.11.12", "2.12.12", "2.13.3", "0.26.0-RC1")
 
 libraryDependencies ++= Seq(
   "org.mockito" % "mockito-core" % "3.3.3",
-  "org.scalatest" %% "scalatest-core" % "3.2.0", 
-  "org.scalatest" %% "scalatest-funsuite" % "3.2.0" % "test"
+  "org.scalatest" %% "scalatest-core" % "3.2.1", 
+  "org.scalatest" %% "scalatest-funsuite" % "3.2.1" % "test"
 )
 
 Test / scalacOptions ++= (if (isDotty.value) Seq("-language:implicitConversions") else Nil)
