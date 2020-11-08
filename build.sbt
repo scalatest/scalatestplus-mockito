@@ -2,7 +2,7 @@ name := "mockito-3.4"
 
 organization := "org.scalatestplus"
 
-version := "3.2.2.0"
+version := "3.2.3.0"
 
 homepage := Some(url("https://github.com/scalatest/scalatestplus-mockito"))
 
@@ -25,12 +25,14 @@ developers := List(
   )
 )
 
-crossScalaVersions := List("2.10.7", "2.11.12", "2.12.12", "2.13.3", "0.27.0-RC1")
+scalaVersion := "2.13.3"
+
+crossScalaVersions := List("2.10.7", "2.11.12", "2.12.12", "2.13.3", "3.0.0-M1")
 
 libraryDependencies ++= Seq(
   "org.mockito" % "mockito-core" % "3.4.6",
-  "org.scalatest" %% "scalatest-core" % "3.2.2",
-  "org.scalatest" %% "scalatest-funsuite" % "3.2.2" % "test"
+  "org.scalatest" %% "scalatest-core" % "3.2.3",
+  "org.scalatest" %% "scalatest-funsuite" % "3.2.3" % "test"
 )
 
 Test / scalacOptions ++= (if (isDotty.value)
@@ -106,5 +108,8 @@ pomExtra := (
 )
 
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
+
+// Temporary disable publishing of doc in dotty, can't get it to build.
+publishArtifact in (Compile, packageDoc) := !scalaBinaryVersion.value.startsWith("3.")
 
 scalacOptions in (Compile, doc) := Seq("-doc-title", s"ScalaTest + Mockito ${version.value}")
