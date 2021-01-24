@@ -2,7 +2,7 @@ name := "mockito-3.4"
 
 organization := "org.scalatestplus"
 
-version := "3.2.3.0"
+version := "3.2.4.0-M1"
 
 homepage := Some(url("https://github.com/scalatest/scalatestplus-mockito"))
 
@@ -27,12 +27,12 @@ developers := List(
 
 scalaVersion := "2.13.4"
 
-crossScalaVersions := List("2.10.7", "2.11.12", "2.12.12", "2.13.4", "3.0.0-M3")
+crossScalaVersions := List("2.10.7", "2.11.12", "2.12.13", "2.13.4", "3.0.0-M3")
 
 libraryDependencies ++= Seq(
   "org.mockito" % "mockito-core" % "3.4.6",
-  "org.scalatest" %% "scalatest-core" % "3.2.3",
-  "org.scalatest" %% "scalatest-funsuite" % "3.2.3" % "test"
+  "org.scalatest" %% "scalatest-core" % "3.2.4-M1",
+  "org.scalatest" %% "scalatest-funsuite" % "3.2.4-M1" % "test"
 )
 
 Test / scalacOptions ++= (if (isDotty.value)
