@@ -16,7 +16,7 @@ Maven:
 ```
 <dependency>
   <groupId>org.scalatestplus</groupId>
-  <artifactId>mockito-3-4</artifactId>
+  <artifactId>mockito-3-4_2.13</artifactId>
   <version>3.2.5.0</version>
   <scope>test</scope>
 </dependency>
