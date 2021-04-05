@@ -1,3 +1,6 @@
+import java.io.PrintWriter
+import scala.io.Source
+
 name := "mockito-3.4"
 
 organization := "org.scalatestplus"
@@ -112,4 +115,37 @@ credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 // Temporary disable publishing of doc in dotty, can't get it to build.
 publishArtifact in (Compile, packageDoc) := !scalaBinaryVersion.value.startsWith("3.")
 
-scalacOptions in (Compile, doc) := Seq("-doc-title", s"ScalaTest + Mockito ${version.value}")
+def docTask(docDir: File, resDir: File, projectName: String): File = {
+  val docLibDir = docDir / "lib"
+  val htmlSrcDir = resDir / "html"
+  val cssFile = docLibDir / "template.css"
+  val addlCssFile = htmlSrcDir / "addl.css"
+
+  val css = Source.fromFile(cssFile).mkString
+  val addlCss = Source.fromFile(addlCssFile).mkString
+
+  if (!css.contains("pre.stHighlighted")) {
+    val writer = new PrintWriter(cssFile)
+
+    try {
+      writer.println(css)
+      writer.println(addlCss)
+    }
+    finally { writer.close }
+  }
+
+  if (projectName.contains("scalatest")) {
+    (htmlSrcDir * "*.gif").get.foreach { gif =>
+      IO.copyFile(gif, docLibDir / gif.name)
+    }
+  }
+  docDir
+}
+
+doc in Compile := docTask((doc in Compile).value,
+                          (sourceDirectory in Compile).value,
+                          name.value)
+
+scalacOptions in (Compile, doc) := Seq("-doc-title", s"ScalaTest + Mockito ${version.value}", 
+                                       "-sourcepath", baseDirectory.value.getAbsolutePath(), 
+                                       "-doc-source-url", s"https://github.com/scalatest/releases-source/blob/main/scalatestplus-mockito/${version.value}€{FILE_PATH}.scala")
