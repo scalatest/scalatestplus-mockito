@@ -64,4 +64,24 @@ class MockitoSugarSpec extends AnyFunSuite with MockitoSugar {
     verify(mockCollaborator, times(3)).documentChanged("Document")
   }
 
+  test("MockitoSugar should capture argument for testing") {
+    // First, create the mock object
+    val mockCollaborator = mock[Collaborator]
+
+    // Create the class under test and pass the mock to it
+    val classUnderTest = new ClassUnderTest
+    classUnderTest.addListener(mockCollaborator)
+
+    // Use the class under test
+    classUnderTest.addDocument("Document", new Array[Byte](0))
+
+    // Create the captor
+    val strCaptor = capture[String]
+    val strCaptor2 = capture[String]
+
+    // Then verify the class under test used the mock object as expected
+    verify(mockCollaborator).documentAdded(strCaptor.capture())
+    assert(strCaptor.getValue === "Document")
+  }
+
 }
