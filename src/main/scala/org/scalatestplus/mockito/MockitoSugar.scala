@@ -170,6 +170,13 @@ trait MockitoSugar {
   def capture[T <: AnyRef](implicit classTag: ClassTag[T]): ArgumentCaptor[T] = {
     ArgumentCaptor.forClass(classTag.runtimeClass.asInstanceOf[Class[T]])
   }
+
+  /**
+   * Invoke the <code>capture(): T</code> method on the <code>ArgumentCaptor</code> for convenience.
+   */
+  implicit def invokeCaptureOnArgumentCaptor[T](captor: ArgumentCaptor[T]): T = {
+    captor.capture()
+  }
 }
 
 /**
