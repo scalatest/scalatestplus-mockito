@@ -31,16 +31,16 @@ class MockitoSugarSpec extends AnyFunSuite with MockitoSugar {
     private val listeners = new scala.collection.mutable.ListBuffer[Collaborator]
 
     def addListener(listener: Collaborator): Unit = {
-      listeners += listener  
+      listeners += listener
     }
 
     def addDocument(name: String, bytes: Array[Byte]): Unit = {
       if (docs.contains(name))
         listeners.foreach(_.documentChanged(name))
       else {
-        docs += name  
+        docs += name
         listeners.foreach(_.documentAdded(name))
-      } 
+      }
     }
 
   }
@@ -62,6 +62,30 @@ class MockitoSugarSpec extends AnyFunSuite with MockitoSugar {
     // Then verify the class under test used the mock object as expected
     verify(mockCollaborator).documentAdded("Document")
     verify(mockCollaborator, times(3)).documentChanged("Document")
+  }
+
+  test("MockitoSugar should capture argument for testing") {
+    // First, create the mock object
+    val mockCollaborator = mock[Collaborator]
+
+    // Create the class under test and pass the mock to it
+    val classUnderTest = new ClassUnderTest
+    classUnderTest.addListener(mockCollaborator)
+
+    // Use the class under test
+    classUnderTest.addDocument("Document", new Array[Byte](0))
+
+    // Create the captor
+    val strCaptor = capture[String]
+    val strCaptor2 = capture[String]
+
+    // Then verify the class under test used the mock object as expected
+    verify(mockCollaborator).documentAdded(strCaptor.capture())
+    assert(strCaptor.getValue === "Document")
+
+    // Use implicit conversion to omit "capture" method
+    verify(mockCollaborator).documentAdded(strCaptor2)
+    assert(strCaptor2.getValue === "Document")
   }
 
 }
