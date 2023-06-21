@@ -34,7 +34,6 @@ crossScalaVersions := List("2.10.7", "2.11.12", "2.12.17", "2.13.10", "3.1.3")
 
 libraryDependencies ++= Seq(
   "org.mockito" % "mockito-core" % "4.11.0",
-  "org.scalatest" %% "scalatest-core" % "3.2.16",
   "org.scalatest" %% "scalatest-funsuite" % "3.2.16" % "test"
 )
 
