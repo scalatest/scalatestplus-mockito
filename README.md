@@ -3,7 +3,7 @@ ScalaTest + Mockito provides integration support between ScalaTest and Mockito.
 
 **Usage**
 
-To use it for ScalaTest 3.2.17 and Mockito 5.8.x: 
+To use it for ScalaTest 3.2.18 and Mockito 5.10.x: 
 
 SBT: 
 
