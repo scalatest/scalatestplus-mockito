@@ -8,7 +8,7 @@ To use it for ScalaTest 3.2.18 and Mockito 5.10.x:
 SBT: 
 
 ```
-libraryDependencies += "org.scalatestplus" %% "mockito-5-8" % "3.2.17.0" % "test"
+libraryDependencies += "org.scalatestplus" %% "mockito-5-10" % "3.2.18.0" % "test"
 ```
 
 Maven: 
@@ -16,8 +16,8 @@ Maven:
 ```
 <dependency>
   <groupId>org.scalatestplus</groupId>
-  <artifactId>mockito-5-8_3</artifactId>
-  <version>3.2.17.0</version>
+  <artifactId>mockito-5-10_3</artifactId>
+  <version>3.2.18.0</version>
   <scope>test</scope>
 </dependency>
 ```
