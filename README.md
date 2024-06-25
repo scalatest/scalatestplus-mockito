@@ -3,12 +3,12 @@ ScalaTest + Mockito provides integration support between ScalaTest and Mockito.
 
 **Usage**
 
-To use it for ScalaTest 3.2.18 and Mockito 5.12.x: 
+To use it for ScalaTest 3.2.19 and Mockito 5.12.x: 
 
 SBT: 
 
 ```
-libraryDependencies += "org.scalatestplus" %% "mockito-5-12" % "3.2.18.0" % "test"
+libraryDependencies += "org.scalatestplus" %% "mockito-5-12" % "3.2.19.0" % "test"
 ```
 
 Maven: 
@@ -17,7 +17,7 @@ Maven:
 <dependency>
   <groupId>org.scalatestplus</groupId>
   <artifactId>mockito-5-12_3</artifactId>
-  <version>3.2.18.0</version>
+  <version>3.2.19.0</version>
   <scope>test</scope>
 </dependency>
 ```

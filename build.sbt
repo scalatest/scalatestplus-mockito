@@ -5,7 +5,7 @@ name := "mockito-5.12"
 
 organization := "org.scalatestplus"
 
-version := "3.2.18.0"
+version := "3.2.19.0"
 
 homepage := Some(url("https://github.com/scalatest/scalatestplus-mockito"))
 
@@ -28,14 +28,14 @@ developers := List(
   )
 )
 
-scalaVersion := "2.13.12"
+scalaVersion := "2.13.13"
 
-crossScalaVersions := List("2.11.12", "2.12.18", "2.13.12", "3.3.1")
+crossScalaVersions := List("2.11.12", "2.12.19", "2.13.13", "3.3.3")
 
 libraryDependencies ++= Seq(
   "org.mockito" % "mockito-core" % "5.12.0",
-  "org.scalatest" %% "scalatest-core" % "3.2.18",
-  "org.scalatest" %% "scalatest-funsuite" % "3.2.18" % "test"
+  "org.scalatest" %% "scalatest-core" % "3.2.19",
+  "org.scalatest" %% "scalatest-funsuite" % "3.2.19" % "test"
 )
 
 import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
