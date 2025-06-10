@@ -1,7 +1,7 @@
 import java.io.PrintWriter
 import scala.io.Source
 
-name := "mockito-5.12"
+name := "mockito-5.14"
 
 organization := "org.scalatestplus"
 
@@ -33,7 +33,7 @@ scalaVersion := "2.13.13"
 crossScalaVersions := List("2.11.12", "2.12.19", "2.13.13", "3.3.3")
 
 libraryDependencies ++= Seq(
-  "org.mockito" % "mockito-core" % "5.12.0",
+  "org.mockito" % "mockito-core" % "5.14.2",
   "org.scalatest" %% "scalatest-core" % "3.2.19",
   "org.scalatest" %% "scalatest-funsuite" % "3.2.19" % "test"
 )
