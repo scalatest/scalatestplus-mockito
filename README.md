@@ -14,12 +14,12 @@ If ScalaTest has saved you time, helped you ship better software, or become a ke
 
 **Usage**
 
-To use it for ScalaTest 3.2.19 and Mockito 5.12.x: 
+To use it for ScalaTest 3.2.19 and Mockito 5.14.x: 
 
 SBT: 
 
 ```
-libraryDependencies += "org.scalatestplus" %% "mockito-5-12" % "3.2.19.0" % "test"
+libraryDependencies += "org.scalatestplus" %% "mockito-5-14" % "3.2.19.0" % "test"
 ```
 
 Maven: 
@@ -27,7 +27,7 @@ Maven:
 ```
 <dependency>
   <groupId>org.scalatestplus</groupId>
-  <artifactId>mockito-5-12_3</artifactId>
+  <artifactId>mockito-5-14_3</artifactId>
   <version>3.2.19.0</version>
   <scope>test</scope>
 </dependency>
