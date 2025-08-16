@@ -14,12 +14,12 @@ If ScalaTest has saved you time, helped you ship better software, or become a ke
 
 **Usage**
 
-To use it for ScalaTest 3.2.19 and Mockito 5.18.x: 
+To use it for ScalaTest 3.3.0-RC1 and Mockito 5.19.x: 
 
 SBT: 
 
 ```
-libraryDependencies += "org.scalatestplus" %% "mockito-5-18" % "3.2.19.0" % "test"
+libraryDependencies += "org.scalatestplus" %% "mockito-5-19" % "3.3.0.0-RC1" % "test"
 ```
 
 Maven: 
@@ -27,8 +27,8 @@ Maven:
 ```
 <dependency>
   <groupId>org.scalatestplus</groupId>
-  <artifactId>mockito-5-18_3</artifactId>
-  <version>3.2.19.0</version>
+  <artifactId>mockito-5-19_3</artifactId>
+  <version>3.3.0.0-RC1</version>
   <scope>test</scope>
 </dependency>
 ```
@@ -42,4 +42,5 @@ Please use the following commands to publish to Sonatype:
 
 ```
 $ sbt +publishSigned
+$ sbt sonaUpload
 ```
