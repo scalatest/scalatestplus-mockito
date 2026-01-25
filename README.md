@@ -42,4 +42,5 @@ Please use the following commands to publish to Sonatype:
 
 ```
 $ sbt +publishSigned
+$ sbt sonaUpload
 ```

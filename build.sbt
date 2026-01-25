@@ -3,9 +3,9 @@ import scala.io.Source
 
 name := "mockito-5.21"
 
-organization := "org.scalatestplus"
+ThisBuild / organization := "org.scalatestplus"
 
-version := "3.2.19.0"
+ThisBuild / version := "3.2.19.0"
 
 homepage := Some(url("https://github.com/scalatest/scalatestplus-mockito"))
 
@@ -83,10 +83,7 @@ OsgiKeys.additionalHeaders := Map(
   "Bundle-Vendor" -> "Artima, Inc."
 )
 
-publishTo := {
-  val nexus = "https://oss.sonatype.org/"
-  Some("publish-releases" at nexus + "service/local/staging/deploy/maven2")
-}
+publishTo := localStaging.value
 
 publishMavenStyle := true
 
