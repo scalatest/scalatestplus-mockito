@@ -1,11 +1,11 @@
 import java.io.PrintWriter
 import scala.io.Source
 
-name := "mockito-5.21"
+name := "mockito-5.23"
 
 ThisBuild / organization := "org.scalatestplus"
 
-ThisBuild / version := "3.2.19.0"
+ThisBuild / version := "3.2.20.0"
 
 homepage := Some(url("https://github.com/scalatest/scalatestplus-mockito"))
 
@@ -28,14 +28,14 @@ developers := List(
   )
 )
 
-scalaVersion := "2.13.17"
+scalaVersion := "2.13.18"
 
-crossScalaVersions := List("2.10.7", "2.11.12", "2.12.20", "2.13.17", "3.3.6")
+crossScalaVersions := List("2.10.7", "2.11.12", "2.12.21", scalaVersion.value, "3.3.7")
 
 libraryDependencies ++= Seq(
-  "org.mockito" % "mockito-core" % "5.21.0",
-  "org.scalatest" %% "scalatest-core" % "3.2.19",
-  "org.scalatest" %% "scalatest-funsuite" % "3.2.19" % "test"
+  "org.mockito" % "mockito-core" % "5.23.0",
+  "org.scalatest" %% "scalatest-core" % "3.2.20",
+  "org.scalatest" %% "scalatest-funsuite" % "3.2.20" % "test"
 )
 
 import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
